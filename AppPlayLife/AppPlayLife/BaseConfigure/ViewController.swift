@@ -70,16 +70,16 @@ extension ViewController {
             label.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             label.heightAnchor.constraint(equalToConstant: 40),
             
-            tableView.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 10),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            
             updateButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            updateButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -60),
+            updateButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40),
             updateButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             updateButton.heightAnchor.constraint(equalToConstant: 50),
             updateButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            
+            tableView.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 10),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            tableView.bottomAnchor.constraint(equalTo: updateButton.topAnchor, constant: -16),
         ])
     }
 }
