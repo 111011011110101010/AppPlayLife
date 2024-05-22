@@ -1,4 +1,3 @@
-
 import Foundation
 import UIKit
 import Combine
@@ -46,13 +45,14 @@ class TableViewMain: UITableView {
             }
             .store(in: &anyCancallables)
         
-        self.viewModel.deadAround
+        viewModel.deadAround
+            .receive(on: DispatchQueue.main)
             .sink { [unowned self] _ in
                 guard let index = viewModel.closestAlive?.index,
                       let cell = self.cellForRow(at: IndexPath(row: index, section: 0))
                         as? TableViewCellMain else { return }
                 cell.kill()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     self.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
                 }
                 viewModel.closestAlive = nil

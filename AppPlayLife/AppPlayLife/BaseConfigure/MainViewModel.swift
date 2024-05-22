@@ -24,7 +24,6 @@ class MainViewModel {
         
         creationSubject
             .latestThreeSame(sameType: .dead)
-            .receive(on: DispatchQueue.main)
             .sink { [unowned self] value in
                 closestAlive?.creation.makeDead()
                 deadAround.send(value)
@@ -42,7 +41,7 @@ class MainViewModel {
         creations.append(creation)
         creationSubject.send(creation)
     }
-    
+                    
     func cellViewModel(forIndexPath indexPath: IndexPath) -> CellViewModel {
         let creation = creations[indexPath.row]
         return CellViewModel(creation: creation)
